@@ -1,0 +1,23 @@
+/* CSS Document */
+@CHARSET "UTF-8";
+.wap-btn-input {float: left;margin-left: 0px;margin-right: 0px;width: 72px;height: 41px;text-align: right;border-radius: 0px;
+border-left: none;
+border-right: none}
+.wap-float-icon{position: absolute; top: 20px; right: 15px; z-index: 666}
+.wap-float-icon li{color: rgba(180, 180, 180, 0.8);}
+.wap-float-icon li:FIRST-CHILD{ margin-right: 10px} 
+.wap-pannel{margin-bottom:2px;}
+
+.wap-specification{overflow: hidden;}
+.wap-specification li span{display:inline-block;}
+.wap-specification li span img{width:30px;height:30px;}
+
+.wap-specification li{padding:2px 5px;display:inline-block;float:left;line-height:20px;}
+.wap-specification li span{border:1px solid #ddd;color: #5E5E5E;padding:5px;line-height:20px;font-size:0.8em;}
+.wap-specification li span .p_vtag{display:none;}
+.wap-specification li span.locked{position:relative;color:#ccc;}
+.wap-specification li span.locked::before{content:'';width:8px;height:8px;border-radius:50%;border:1px solid #f00;position:absolute;bottom:1px;right:1px;}
+.wap-specification li span.locked::after{content:'';width:1px;height:8px;background:#f00;position:absolute;bottom:1px;right:5px;-webkit-transform:rotate(-45deg);}
+.wap-specification li span.m_sfadd_hove{position:relative;background:#f00;color:#fff;border-color:#f00;}
+.wap-specification li span.m_sfadd_hove a::after{content:'v';color:#f00;}
+.wap-specification li span.m_sfadd_hove .p_vtag{display:block;}

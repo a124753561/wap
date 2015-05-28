@@ -1,0 +1,12 @@
+/* CSS Document */
+/*order_info_address*/
+.wap-address{ background-color: #D3A06F; padding: 10px 10px 10px 10px; height: 71px;color: #fff;}
+.wap-address address a.wap-address-to{ color:#fff; bottom: 35px; position: relative;}
+.wap-address address p{ margin-bottom:0px; margin-top:0px;}
+.wap-address address p span{ margin-left:5px;}
+.wap-address address p i{ margin-left:6px;}
+
+.wap-method-div{padding: 2px 5px 2px 5px; height: 51px; line-height: 44px;}
+.wap-static-float-bottom p{padding: 0px 8px;margin: 1px;line-height: 20px;}
+
+

@@ -1,0 +1,235 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<link rel="stylesheet" type="text/css" href="../AmazeUI-2.3.0/assets/css/amazeui.min.css">
+<link rel="stylesheet" type="text/css" href="../static/css/common.css">
+<link rel="stylesheet" type="text/css" href="../static/css/product-content.css">
+<link rel="alternate icon" type="image/png" href="../AmazeUI-2.3.0/assets/i/favicon.png">
+<script src="../AmazeUI-2.3.0/assets/js/jquery.min.js"></script>
+<script src="../AmazeUI-2.3.0/assets/js/amazeui.min.js"></script>
+<script src="../static/js/common.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+	$("#addCart").on("click",function(){
+		var wapJs= new WapJS();
+		wapJs.modalFade("HHAA",2000);
+		return false;
+		$("#showCartCount").addClass("am-animation-scale-down").one($.AMUI.support.animation.end, function() {
+              $("#showCartCount").removeClass("am-animation-scale-down");
+            });
+	});
+	
+	
+	//减
+	$(".wap-at-minus").on("click",function(){
+		var $num=$(this).parent().find("input");
+			if(parseInt($num.val())>1){
+				$num.val( parseInt($num.val())-1);
+				}
+		});
+	//加
+	$(".wap-at-plus").on("click",function(){
+		var $num=$(this).parent().find("input");
+		if($num.val()!=""){
+			$num.val(parseInt($num.val())+1);
+			}else{
+				$num.val(1);
+				}
+		})
+	//输入框
+	var $quantity=$("input[name='quantity']");
+	$quantity.on('keypress',function(event) {
+		var quantity=$quantity.val();
+		var key = event.keyCode ? event.keyCode : event.which;
+		if ((key >= 48 && key <= 57) || key==8) {
+			return true;
+		} else {
+			return false;
+		}
+	});
+	});
+</script>
+<title>商品详情</title>
+</head>
+<body>
+<div class="page">
+	<header data-am-widget="header" class="am-header am-header-default">
+		<div class="am-header-left am-header-nav"> <a href="#left-link" class=""> <span class="am-header-nav-title">返回</span> </a> </div>
+		<h1 class="am-header-title">商品详情</h1>
+		<div class="am-header-right am-header-nav"> <a href="#right-link" class=""> <i
+					class="am-header-icon am-icon-shopping-cart"></i> </a> </div>
+	</header>
+	<div class="am-slider am-slider-default" style="margin-bottom:2px;" data-am-flexslider>
+		<ul class="am-slides">
+			<li>
+				<figure data-am-widget="figure" class="am am-figure am-figure-default "
+data-am-figure="{  pureview: 'true' }"> <img src="../1z.jpg"  /> </figure>
+			</li>
+			<li>
+				<figure data-am-widget="figure" class="am am-figure am-figure-default "
+data-am-figure="{  pureview: 'true' }"> <img src="../1z.jpg"  /> </figure>
+			</li>
+			<li>
+				<figure data-am-widget="figure" class="am am-figure am-figure-default "
+data-am-figure="{  pureview: 'true' }"> <img src="../1z.jpg"  /> </figure>
+			</li>
+		</ul>
+		<div class="wap-float-icon"> <a href="javascript:;"> <i
+					class="am-icon-share-alt-square am-warning am-icon-lg"
+					></i></a> <a
+					href="javascript:;"><i
+					class="am-icon-star-o am-warning am-icon-lg"
+					></i></a> </div>
+	</div>
+	<div class="am-margin-left-sm">
+		<h5 class="am-margin-bottom-xs">商品名</h5>
+		<div> <strong class="am-text-danger" ><i class="am-icon-cny"></i>12</strong> <del> <small><i class="am-icon-cny"></i>22</small> </del> <span>赠送积分</span> <strong class="am-text-danger">2234</strong> <a
+					href="instruction.html"><i
+					class="am-icon-angle-right wap-icon-right"></i></a> </div>
+		<div> <small> 5公里免费 </small> </div>
+	</div>
+	<hr data-am-widget="divider" style="margin: 0.5rem auto " class="am-divider am-divider-default" />
+	<div class="am-margin-left-sm">
+		<div class="am-btn-group">
+			<button type="button" class="am-btn am-btn-primary am-round wap-at-minus"> <i class="am-icon-minus"></i> </button>
+			<input type="text" class="wap-btn-input" maxlength="5" value="1" name="quantity" />
+			<button type="button" class="am-btn am-btn-primary am-round wap-at-plus"> <i class="am-icon-plus"></i> </button>
+		</div>
+		<select name="packagUnitId"
+				data-am-selected="{btnWidth: 55, btnSize: 'sm', btnStyle: 'primary'}">
+			<option value="1">灌</option>
+			<option value="2">箱</option>
+		</select>
+	</div>
+	<hr data-am-widget="divider" style="margin: 0.5rem auto 1px auto"
+			class="am-divider am-divider-default" />
+	<div>
+		<h5 class="am-margin-left-sm" style="margin:2px auto;">选择尺寸</h5>	
+		<div class="wap-specification">
+			<ul style="list-style:none;">
+								<li><span name="specificationValue" class="m_sfadd_hove" val="3">XL<div class="p_vtag"></div></span></li>
+								<li><span name="specificationValue" class="locked" val="4">XXL<div class="p_vtag"></div></span></li>
+								<li><span name="specificationValue" class="locked" val="5">XXXL<div class="p_vtag"></div></span></li>
+								<li><span name="specificationValue" class="" val="6">4XL<div class="p_vtag"></div></span></li>
+							</ul>
+		</div>
+		<h5 class="am-margin-left-sm" style="margin:2px auto;">选择颜色</h5>	
+		<div class="wap-specification">
+			<ul style="list-style:none;">
+								<li><span name="specificationValue" class="m_sfadd_hove" val="3">红色<div class="p_vtag"></div></span></li>
+								<li><span name="specificationValue" class="" val="4">黑色<div class="p_vtag"></div></span></li>
+								<li><span name="specificationValue" class="" val="5">白色<div class="p_vtag"></div></span></li>
+							</ul>
+		</div>
+	</div>		
+	
+	<hr data-am-widget="divider" style="margin: 0.5rem auto"
+			class="am-divider am-divider-default" />
+	<div class="am-margin-left-sm">
+		<h5 style="margin: 1rem auto;"> 评价<i class="am-icon-angle-right wap-icon-right"></i> <i class="wap-icon-start-9 wap-icon-right"></i>(12)</h5>
+	</div>
+	<hr data-am-widget="divider" style="margin: 0.5rem auto"
+				class="am-divider am-divider-default" />
+	<div class="am-margin-left-sm">
+		<h5 style="margin: 1rem auto;"> 咨询<i class="am-icon-angle-right wap-icon-right"></i> (22)</h5>
+	</div>
+	<hr data-am-widget="divider" style="margin: 0.5rem auto"
+			class="am-divider am-divider-default" />
+	<div class="am-margin-left-sm">
+		<h5 style="margin: 1rem auto;">所属商家</h5>
+		<small>石巨人</small><i class="am-icon-angle-right wap-icon-right"></i> </div>
+	<hr data-am-widget="divider" style="margin: 0.5rem auto"
+			class="am-divider am-divider-default" />
+	<div class="am-margin-left-sm" >
+		<h5 style="margin: 1rem auto;">猜你喜欢</h5>
+	</div>
+	<div>
+		<ul data-am-widget="gallery"
+				class="am-gallery am-avg-sm-2
+  am-avg-md-3 am-avg-lg-4 am-gallery-default"
+				data-am-gallery="{ }">
+			<li>
+				<div class="am-gallery-item"> <a href="${base}/wap/product/content/${product.id}.jhtml" class="display:block;"> <img
+							src="${product.thumbnail}" alt="远方 有一个地方 那里种有我们的梦想" />
+					<h3 class="am-gallery-title"> <span class="am-text-danger"><i class="am-icon-cny"></i>${product.price}</span> <del> <i class="am-icon-cny"></i>${product.marketPrice} </del> </h3>
+					<div class="am-gallery-desc">${product.fullName}</div>
+					</a> </div>
+			</li>
+			<li>
+				<div class="am-gallery-item"> <a href="${base}/wap/product/content/${product.id}.jhtml" class="display:block;"> <img
+							src="${product.thumbnail}" alt="远方 有一个地方 那里种有我们的梦想" />
+					<h3 class="am-gallery-title"> <span class="am-text-danger"><i class="am-icon-cny"></i>${product.price}</span> <del> <i class="am-icon-cny"></i>12 </del> </h3>
+					<div class="am-gallery-desc">cessdf</div>
+					</a> </div>
+			</li>
+			<li>
+				<div class="am-gallery-item"> <a href="${base}/wap/product/content/${product.id}.jhtml" class="display:block;"> <img
+							src="${product.thumbnail}" alt="远方 有一个地方 那里种有我们的梦想" />
+					<h3 class="am-gallery-title"> <span class="am-text-danger"><i class="am-icon-cny"></i>${product.price}</span> <del> <i class="am-icon-cny"></i>${product.marketPrice} </del> </h3>
+					<div class="am-gallery-desc">${product.fullName}</div>
+					</a> </div>
+			</li>
+			<li>
+				<div class="am-gallery-item"> <a href="${base}/wap/product/content/${product.id}.jhtml" class="display:block;"> <img
+							src="${product.thumbnail}" alt="远方 有一个地方 那里种有我们的梦想" />
+					<h3 class="am-gallery-title"> <span class="am-text-danger"><i class="am-icon-cny"></i>${product.price}</span> <del> <i class="am-icon-cny"></i>${product.marketPrice} </del> </h3>
+					<div class="am-gallery-desc">${product.fullName}</div>
+					</a> </div>
+			</li>
+			<li>
+				<div class="am-gallery-item"> <a href="${base}/wap/product/content/${product.id}.jhtml" class="display:block;"> <img
+							src="${product.thumbnail}" alt="远方 有一个地方 那里种有我们的梦想" />
+					<h3 class="am-gallery-title"> <span class="am-text-danger"><i class="am-icon-cny"></i>${product.price}</span> <del> <i class="am-icon-cny"></i>${product.marketPrice} </del> </h3>
+					<div class="am-gallery-desc">${product.fullName}</div>
+					</a> </div>
+			</li>
+			<li>
+				<div class="am-gallery-item"> <a href="${base}/wap/product/content/${product.id}.jhtml" class="display:block;"> <img
+							src="${product.thumbnail}" alt="远方 有一个地方 那里种有我们的梦想" />
+					<h3 class="am-gallery-title"> <span class="am-text-danger"><i class="am-icon-cny"></i>${product.price}</span> <del> <i class="am-icon-cny"></i>${product.marketPrice} </del> </h3>
+					<div class="am-gallery-desc">${product.fullName}</div>
+					</a> </div>
+			</li>
+			<li>
+				<div class="am-gallery-item"> <a href="${base}/wap/product/content/${product.id}.jhtml" class="display:block;"> <img
+							src="${product.thumbnail}" alt="远方 有一个地方 那里种有我们的梦想" />
+					<h3 class="am-gallery-title"> <span class="am-text-danger"><i class="am-icon-cny"></i>${product.price}</span> <del> <i class="am-icon-cny"></i>${product.marketPrice} </del> </h3>
+					<div class="am-gallery-desc">${product.fullName}</div>
+					</a> </div>
+			</li>
+			<li>
+				<div class="am-gallery-item"> <a href="${base}/wap/product/content/${product.id}.jhtml" class="display:block;"> <img
+							src="${product.thumbnail}" alt="远方 有一个地方 那里种有我们的梦想" />
+					<h3 class="am-gallery-title"> <span class="am-text-danger"><i class="am-icon-cny"></i>${product.price}</span> <del> <i class="am-icon-cny"></i>${product.marketPrice} </del> </h3>
+					<div class="am-gallery-desc">${product.fullName}</div>
+					</a> </div>
+			</li>
+		</ul>
+	</div>
+	<div data-am-widget="navbar" class="am-navbar am-cf am-navbar-secondary am-no-layout wap-static-float-bottom">
+		<ul class="am-avg-sm-2 ">
+			<li class=" am-text-center ">
+				<button type="button" class=" am-btn am-radius am-btn-danger am-btn-sm">立即购买</button>
+			</li>
+			<li class=" am-text-center ">
+				<button type="button" id="addCart" class="am-btn am-radius am-btn-sm am-btn-warning" am-btn-danger">加入购物车<span class="am-badge am-badge-danger am-round" id="showCartCount">10</span></button>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="am-modal am-modal-no-btn" tabindex="-1" id="wap-modal-pannel">
+  <div class="wap-noicon-tips">
+    <div class="am-modal-bd">
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="../AmazeUI-2.3.0/assets/css/amazeui.min.css">
+<link rel="stylesheet" type="text/css" href="../AmazeUI-2.3.0/assets/css/app.css">
+<link rel="alternate icon" type="image/png" href="../AmazeUI-2.3.0/assets/i/favicon.png">
+<script src="../AmazeUI-2.3.0/assets/js/jquery.min.js"></script>
+<script src="../AmazeUI-2.3.0/assets/js/amazeui.min.js"></script>
+<script src="../AmazeUI-2.3.0/assets/js/handlebars.min.js"></script>
+<script type="text/x-handlebars-template" id="tpi-list-item">
+	{{#each this}}
+  <li>
+    <div class="am-gallery-item">
+      <a href="javascript:;"
+      class="am-block am-link-muted">
+        <img src="http://s.cn.bing.net/az/hprichbg/rb/TheLuxorHotel_ZH-CN12121725266_1920x1080.jpg"
+        alt="远方 有一个地方 那里种有我们的梦想" />
+        <div ><strong class="am-text-danger"><i class=" am-icon-cny"></i>120.00</strong><del class="am-text-default"><small><i class="am-icon-cny"></i>200.00</small></del></div>
+		<h3 class="am-gallery-title" style="margin-top:1px;">远方 有一个地方 那里种有我们的梦想</h3>
+      </a>
+    </div>
+  </li>
+  {{/each}}
+</script>
+<script>
+	(function($) {
+    var EventsList = function(element, options) {
+      var $main = $('#wrapper');
+      var $list = $main.find('#events-list');
+      var $pullDown = $main.find('#pull-down');
+      var $pullDownLabel = $main.find('#pull-down-label');
+      var $pullUp = $main.find('#pull-up');
+      var topOffset = -$pullDown.outerHeight();
+
+      this.compiler = Handlebars.compile($('#tpi-list-item').html());
+      this.prev = this.next = this.start = options.params.start;
+      this.total = null;
+
+      this.getURL = function(params) {
+        var queries = ['callback=?'];
+        for (var key in  params) {
+          if (key !== 'start') {
+            queries.push(key + '=' + params[key]);
+          }
+        }
+        queries.push('start=');
+        return options.api + '?' + queries.join('&');
+      };
+
+      this.renderList = function(start, type) {
+        var _this = this;
+        var $el = $pullDown;
+
+        if (type === 'load') {
+          $el = $pullUp;
+        }
+
+        $.getJSON(this.URL + start).then(function(data) {
+          console.log(data);
+          _this.total = data.total;
+          var html = _this.compiler(data.events);
+          if (type === 'refresh') {
+            $list.children('li').first().before(html);
+          } else if (type === 'load') {
+            $list.append(html);
+          } else {
+            $list.html(html);
+          }
+
+          // refresh iScroll
+          setTimeout(function() {
+            _this.iScroll.refresh();
+          }, 100);
+        }, function() {
+          console.log('Error...')
+        }).always(function() {
+          _this.resetLoading($el);
+          if (type !== 'load') {
+            _this.iScroll.scrollTo(0, topOffset, 800, $.AMUI.iScroll.utils.circular);
+          }
+        });
+      };
+
+      this.setLoading = function($el) {
+        $el.addClass('loading');
+      };
+
+      this.resetLoading = function($el) {
+        $el.removeClass('loading');
+      };
+
+      this.init = function() {
+        var myScroll = this.iScroll = new $.AMUI.iScroll('#wrapper', {});
+        // myScroll.scrollTo(0, topOffset);
+        var _this = this;
+        var pullFormTop = false;
+        var pullStart;
+
+        this.URL = this.getURL(options.params);
+        this.renderList(options.params.start);
+
+        myScroll.on('scrollStart', function() {
+          if (this.y >= topOffset) {
+            pullFormTop = true;
+          }
+
+          pullStart = this.y;
+          // console.log(this);
+        });
+
+        myScroll.on('scrollEnd', function() {
+          if (pullFormTop && this.directionY === -1) {
+            _this.handlePullDown();
+          }
+          pullFormTop = false;
+
+          // pull up to load more
+          if (pullStart === this.y && (this.directionY === 1)) {
+            _this.handlePullUp();
+          }
+        });
+      };
+
+      this.handlePullDown = function() {
+        console.log('handle pull down');
+        if (this.prev > 0) {
+          this.setLoading($pullDown);
+          this.prev -= options.params.count;
+          this.renderList(this.prev, 'refresh');
+        } else {
+          console.log('别刷了，没有了');
+        }
+      };
+
+      this.handlePullUp = function() {
+        console.log('handle pull up');
+        if (this.next < this.total) {
+          this.setLoading($pullUp);
+          this.next += options.params.count;
+          this.renderList(this.next, 'load');
+        } else {
+          console.log(this.next);
+          // this.iScroll.scrollTo(0, topOffset);
+        }
+      }
+    };
+
+    $(function() {
+      var app = new EventsList(null, {
+        api: 'https://api.douban.com/v2/event/list',
+        params: {
+          start: 2,
+          type: 'music',
+          count: 10,
+          loc: 'beijing'
+        }
+      });
+      app.init();
+    });
+
+    document.addEventListener('touchmove', function(e) {
+      e.preventDefault();
+    }, false);
+  })(window.jQuery);
+</script>
+<title>商品列表</title>
+</head>
+<body>
+	<div class="page">
+		<header data-am-widget="header" class="am-header am-header-default">
+			<a href="javascript:;"> <span
+				class="am-header-left am-header-nav am-header-nav-title">返回</span>
+			</a>
+			<h1 class="am-header-title">商品列表</h1>
+			<div class="am-header-right am-header-nav">
+				<a id="search_btn" href="javascript:;"> <i
+					class=" am-header-icon am-icon-search"></i>
+				</a> <a href="#right-link" class=""> <i
+					class="am-header-icon am-icon-shopping-cart"></i>
+				</a>
+			</div>
+		</header>
+		<nav data-am-widget="menu" class="am-menu  am-menu-dropdown1" data-am-menu-collapse>
+  <a href="javascript: void(0)" class="am-menu-toggle">
+    <span class="am-menu-toggle-title">菜单</span>
+    <i class="am-menu-toggle-icon am-icon-angle-right"></i>
+  </a>
+  <ul class="am-menu-nav am-avg-sm-1 am-collapse">
+    <li class="am-parent">
+      <a href="##" class="">公司</a>
+      <ul class="am-menu-sub am-collapse  am-avg-sm-2 ">
+        <li class="">
+          <a href="##" class="">公司</a>
+        </li>
+        <li class="">
+          <a href="##" class="">人物</a>
+        </li>
+        <li class="">
+          <a href="##" class="">趋势</a>
+        </li>
+        <li class="">
+          <a href="##" class="">投融资</a>
+        </li>
+        <li class="">
+          <a href="##" class="">创业公司</a>
+        </li>
+        <li class="">
+          <a href="##" class="">创业人物</a>
+        </li>
+        <li class="am-menu-nav-channel">
+          <a href="##" class="" title="公司">进入栏目 &raquo;</a>
+        </li>
+      </ul>
+    </li>
+    <li class="am-parent">
+      <a href="##" class="">人物</a>
+      <ul class="am-menu-sub am-collapse  am-avg-sm-3 ">
+        <li class="">
+          <a href="##" class="">公司</a>
+        </li>
+        <li class="">
+          <a href="##" class="">人物</a>
+        </li>
+        <li class="">
+          <a href="##" class="">趋势</a>
+        </li>
+        <li class="">
+          <a href="##" class="">投融资</a>
+        </li>
+        <li class="">
+          <a href="##" class="">创业公司</a>
+        </li>
+        <li class="">
+          <a href="##" class="">创业人物</a>
+        </li>
+      </ul>
+    </li>
+    <li class="am-parent">
+      <a href="#c3" class="">趋势</a>
+      <ul class="am-menu-sub am-collapse  am-avg-sm-4 ">
+        <li class="">
+          <a href="##" class="">公司</a>
+        </li>
+        <li class="">
+          <a href="##" class="">人物</a>
+        </li>
+        <li class="">
+          <a href="##" class="">趋势</a>
+        </li>
+        <li class="">
+          <a href="##" class="">投融资</a>
+        </li>
+        <li class="">
+          <a href="##" class="">创业公司</a>
+        </li>
+        <li class="">
+          <a href="##" class="">创业人物</a>
+        </li>
+        <li class="am-menu-nav-channel">
+          <a href="#c3" class="" title="趋势">泥煤 &raquo;</a>
+        </li>
+      </ul>
+    </li>
+    <li class="am-parent">
+      <a href="##" class="">投融资</a>
+      <ul class="am-menu-sub am-collapse  am-avg-sm-3 ">
+        <li class="">
+          <a href="##" class="">公司</a>
+        </li>
+        <li class="">
+          <a href="##" class="">人物</a>
+        </li>
+        <li class="">
+          <a href="##" class="">趋势</a>
+        </li>
+        <li class="">
+          <a href="##" class="">投融资</a>
+        </li>
+        <li class="">
+          <a href="##" class="">创业公司</a>
+        </li>
+        <li class="">
+          <a href="##" class="">创业人物</a>
+        </li>
+      </ul>
+    </li>
+    <li class="">
+      <a href="##" class="">创业公司</a>
+    </li>
+    <li class="">
+      <a href="##" class="">创业人物</a>
+    </li>
+  </ul>
+</nav>
+		
+		
+		
+		<div  id="wrapper" data-am-widget="list_news"
+			class="am-list-news am-list-news-default wap-wrapper">
+			<div class="am-list-news-bd">
+				<div class="pull-action loading" id="pull-down">
+					<span class="am-icon-arrow-down pull-label" id="pull-down-label">
+						下拉刷新</span> <span class="am-icon-spinner am-icon-spin"></span>
+				</div>
+				<ul class="am-list am-gallery am-avg-sm-2 am-gallery-default" data-am-gallery="{}" id="events-list" data-am-widget="gallery" > 
+					<li class="am-list-item-desced am-hide >
+						<div class="am-list-item-text">正在加载内容...</div>
+					</li>
+					
+ 	</ul>
+				<div class="pull-action" id="pull-up">
+					<span class="am-icon-arrow-down pull-label" id="pull-up-label">
+						上拉加载更多</span> <span class="am-icon-spinner am-icon-spin"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
