@@ -3,9 +3,7 @@
 .wap-btn-input {float: left;margin-left: 0px;margin-right: 0px;width: 72px;height: 41px;text-align: right;border-radius: 0px;
 border-left: none;
 border-right: none}
-.wap-float-icon{position: absolute; top: 20px; right: 15px; z-index: 666}
-.wap-float-icon li{color: rgba(180, 180, 180, 0.8);}
-.wap-float-icon li:FIRST-CHILD{ margin-right: 10px} 
+
 .wap-pannel{margin-bottom:2px;}
 
 .wap-specification{overflow: hidden;}

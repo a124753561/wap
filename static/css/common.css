@@ -15,6 +15,11 @@ text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothi
 .wap-static-float-bottom { background-color: rgba(241, 241, 241, 0.94); }
 .wap-btn-select { border-radius: 2px; }
 .wap-icon-right { float: right; margin-right: 14px; }
+
+.wap-float-icon{position: absolute; top: 20px; right: 15px; z-index: 666}
+.wap-float-icon li{color: rgba(180, 180, 180, 0.8);}
+.wap-float-icon li:FIRST-CHILD{ margin-right: 10px}
+
 .wap-icon-start-0:before { content: "\f006\f006\f006\f006\f006"; color: rgb(247, 83, 60); }
 .wap-icon-start-1:before { content: "\f123\f006\f006\f006\f006"; color: rgb(247, 83, 60); }
 .wap-icon-start-2:before { content: "\f005\f006\f006\f006\f006"; color: rgb(247, 83, 60); }
@@ -26,6 +31,8 @@ text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothi
 .wap-icon-start-8:before { content: "\f005\f005\f005\f005\f006"; color: rgb(247, 83, 60); }
 .wap-icon-start-9:before { content: "\f005\f005\f005\f005\f123"; color: rgb(247, 83, 60); }
 .wap-icon-start-10:before { content: "\f005\f005\f005\f005\f005"; color: rgb(247, 83, 60); }
+
+.wap-text-block{display: block;background-color: rgb(218, 218, 218);border-radius: 2px;}
 
 /*详情规格选中右下角勾*/
 .p_vtag{border-radius:50%;background:#fff;width:8px;height:8px;position:absolute;bottom:0px;right:0px;}

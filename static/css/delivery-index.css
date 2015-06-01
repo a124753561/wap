@@ -1,0 +1,5 @@
+
+/*taps*/
+.am-nav-tabs>li>a{border: none;  font-size: 1.4rem;}
+.am-nav-tabs>li.am-active{border-bottom: 2px solid #f00;}
+.am-nav-tabs>li.am-active>a{border: none;font-size: 1.5rem;}
