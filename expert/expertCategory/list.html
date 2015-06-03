@@ -13,76 +13,159 @@
     <link rel="alternate icon" type="image/png" href="../../AmazeUI-2.3.0/assets/i/favicon.png">
     <script src="../../AmazeUI-2.3.0/assets/js/jquery.min.js"></script>
     <script src="../../AmazeUI-2.3.0/assets/js/amazeui.min.js"></script>
+    <script src="../../static/js/common.js"></script>
     <title>资讯</title>
+    <style>
+        #wrapper {
+            position: absolute;
+            z-index: 1;
+            top: 45px;
+            bottom: 0px;
+            left: 0;
+            width: 100%;
+            background: #fff;
+            overflow: hidden;
+        }
+    </style>
+    <title>资讯</title>
+    <script>
+        function wapScroll(){
+            var IScroll = $.AMUI.iScroll;
+            var myScroll = new IScroll("#wrapper");
+            myScroll.refresh();
+        }
+    </script>
 </head>
-<body>
+<body onload="wapScroll();">
 <div class="page">
     <header data-am-widget="header" class="am-header am-header-default">
         <div class="am-header-left am-header-nav"><a href="#left-link" class=""> <span
                 class="am-header-nav-title">返回</span> </a></div>
         <h1 class="am-header-title">专家咨询</h1>
     </header>
-    <div
-            class="am-panel">
-        <ul data-am-widget="gallery" class="am-gallery am-avg-sm-3
-  am-avg-md-4 am-avg-lg-5 am-gallery-default am-gallery-overlay" data-am-gallery="">
-            <li>
-                <div class="am-gallery-item">
-                    <a href="http://www.ruishangquan.com/upload/image/201501/ffc7fcf3-012a-4642-a359-a0defc07bdaf.jpg"
-                       class="">
+    <div id="wrapper">
+        <div>
+            <ul data-am-widget="gallery" class="am-gallery am-avg-sm-2
+  am-avg-md-4 am-avg-lg-5 am-gallery-bordered " data-am-gallery="">
+                <li>
+                    <div class="am-gallery-item">
                         <img src="http://www.ruishangquan.com/upload/image/201501/ffc7fcf3-012a-4642-a359-a0defc07bdaf.jpg"
                              alt="远方 有一个地方 那里种有我们的梦想"/>
-                        <h3 class="am-gallery-title">互联网频道</h3>
-                    </a>
-                </div>
-            </li> <li>
-                <div class="am-gallery-item">
-                    <a href="http://www.ruishangquan.com/upload/image/201501/ffc7fcf3-012a-4642-a359-a0defc07bdaf.jpg"
-                       class="">
-                        <img src="http://www.ruishangquan.com/upload/image/201501/ffc7fcf3-012a-4642-a359-a0defc07bdaf.jpg"
-                             alt="远方 有一个地方 那里种有我们的梦想"/>
-                        <h3 class="am-gallery-title">互联网频道</h3>
-                    </a>
-                </div>
-            </li> <li>
-                <div class="am-gallery-item">
-                    <a href="http://www.ruishangquan.com/upload/image/201501/ffc7fcf3-012a-4642-a359-a0defc07bdaf.jpg"
-                       class="">
-                        <img src="http://www.ruishangquan.com/upload/image/201501/ffc7fcf3-012a-4642-a359-a0defc07bdaf.jpg"
-                             alt="远方 有一个地方 那里种有我们的梦想"/>
-                        <h3 class="am-gallery-title">互联网频道</h3>
-                    </a>
-                </div>
-            </li> <li>
-                <div class="am-gallery-item">
-                    <a href="http://www.ruishangquan.com/upload/image/201501/ffc7fcf3-012a-4642-a359-a0defc07bdaf.jpg"
-                       class="">
-                        <img src="http://www.ruishangquan.com/upload/image/201501/ffc7fcf3-012a-4642-a359-a0defc07bdaf.jpg"
-                             alt="远方 有一个地方 那里种有我们的梦想"/>
-                        <h3 class="am-gallery-title">互联网频道</h3>
-                    </a>
-                </div>
-            </li> <li>
-                <div class="am-gallery-item">
-                    <a href="http://www.ruishangquan.com/upload/image/201501/ffc7fcf3-012a-4642-a359-a0defc07bdaf.jpg"
-                       class="">
-                        <img src="http://www.ruishangquan.com/upload/image/201501/ffc7fcf3-012a-4642-a359-a0defc07bdaf.jpg"
-                             alt="远方 有一个地方 那里种有我们的梦想"/>
-                        <h3 class="am-gallery-title">互联网频道</h3>
-                    </a>
-                </div>
-            </li> <li>
-                <div class="am-gallery-item">
-                    <a href="http://www.ruishangquan.com/upload/image/201501/ffc7fcf3-012a-4642-a359-a0defc07bdaf.jpg"
-                       class="">
-                        <img src="http://www.ruishangquan.com/upload/image/201501/ffc7fcf3-012a-4642-a359-a0defc07bdaf.jpg"
-                             alt="远方 有一个地方 那里种有我们的梦想"/>
-                        <h3 class="am-gallery-title">互联网频道</h3>
-                    </a>
-                </div>
-            </li>
-        </ul>
 
+                        <h3 class="am-gallery-title am-text-center">张森荣</h3>
+
+                        <div class="am-gallery-desc">
+                            <p class="am-margin-bottom-xs">专职疑难杂症专职疑难杂症专职疑难杂症</p>
+                        </div>
+                        <a class="am-btn am-btn-secondary am-padding-xs am-center">咨询</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="am-gallery-item">
+                        <img src="http://www.ruishangquan.com/upload/image/201501/ffc7fcf3-012a-4642-a359-a0defc07bdaf.jpg"
+                             alt="远方 有一个地方 那里种有我们的梦想"/>
+
+                        <h3 class="am-gallery-title am-text-center">张森荣</h3>
+
+                        <div class="am-gallery-desc">
+                            <p class="am-margin-bottom-xs">专职疑难杂症专职疑难杂症专职疑难杂症</p>
+                        </div>
+                        <a class="am-btn am-btn-secondary am-padding-xs">咨询</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="am-gallery-item">
+                        <img src="http://www.ruishangquan.com/upload/image/201501/ffc7fcf3-012a-4642-a359-a0defc07bdaf.jpg"
+                             alt="远方 有一个地方 那里种有我们的梦想"/>
+
+                        <h3 class="am-gallery-title am-text-center">张森荣</h3>
+
+                        <div class="am-gallery-desc">
+                            <p class="am-margin-bottom-xs">专职疑难杂症专职疑难杂症专职疑难杂症</p>
+                        </div>
+                        <a class="am-btn am-btn-secondary am-padding-xs">咨询</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="am-gallery-item">
+                        <img src="http://www.ruishangquan.com/upload/image/201501/ffc7fcf3-012a-4642-a359-a0defc07bdaf.jpg"
+                             alt="远方 有一个地方 那里种有我们的梦想"/>
+
+                        <h3 class="am-gallery-title am-text-center">张森荣</h3>
+
+                        <div class="am-gallery-desc">
+                            <p class="am-margin-bottom-xs">专职疑难杂症专职疑难杂症专职疑难杂症</p>
+                        </div>
+                        <a class="am-btn am-btn-secondary am-padding-xs">咨询</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="am-gallery-item">
+                        <img src="http://www.ruishangquan.com/upload/image/201501/ffc7fcf3-012a-4642-a359-a0defc07bdaf.jpg"
+                             alt="远方 有一个地方 那里种有我们的梦想"/>
+
+                        <h3 class="am-gallery-title am-text-center">张森荣</h3>
+
+                        <div class="am-gallery-desc">
+                            <p class="am-margin-bottom-xs">专职疑难杂症专职疑难杂症专职疑难杂症</p>
+                        </div>
+                        <a class="am-btn am-btn-secondary am-padding-xs">咨询</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="am-gallery-item">
+                        <img src="http://www.ruishangquan.com/upload/image/201501/ffc7fcf3-012a-4642-a359-a0defc07bdaf.jpg"
+                             alt="远方 有一个地方 那里种有我们的梦想"/>
+
+                        <h3 class="am-gallery-title am-text-center">张森荣</h3>
+
+                        <div class="am-gallery-desc">
+                            <p class="am-margin-bottom-xs">专职疑难杂症专职疑难杂症专职疑难杂症</p>
+                        </div>
+                        <a class="am-btn am-btn-secondary am-padding-xs">咨询</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="am-gallery-item">
+                        <img src="http://www.ruishangquan.com/upload/image/201501/ffc7fcf3-012a-4642-a359-a0defc07bdaf.jpg"
+                             alt="远方 有一个地方 那里种有我们的梦想"/>
+
+                        <h3 class="am-gallery-title am-text-center">张森荣</h3>
+
+                        <div class="am-gallery-desc">
+                            <p class="am-margin-bottom-xs">专职疑难杂症专职疑难杂症专职疑难杂症</p>
+                        </div>
+                        <a class="am-btn am-btn-secondary am-padding-xs">咨询</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="am-gallery-item">
+                        <img src="http://www.ruishangquan.com/upload/image/201501/ffc7fcf3-012a-4642-a359-a0defc07bdaf.jpg"
+                             alt="远方 有一个地方 那里种有我们的梦想"/>
+
+                        <h3 class="am-gallery-title am-text-center">张森荣</h3>
+
+                        <div class="am-gallery-desc">
+                            <p class="am-margin-bottom-xs">专职疑难杂症专职疑难杂症专职疑难杂症</p>
+                        </div>
+                        <a class="am-btn am-btn-secondary am-padding-xs">咨询</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="am-gallery-item">
+                        <img src="http://www.ruishangquan.com/upload/image/201501/ffc7fcf3-012a-4642-a359-a0defc07bdaf.jpg"
+                             alt="远方 有一个地方 那里种有我们的梦想"/>
+
+                        <h3 class="am-gallery-title am-text-center">张森荣</h3>
+
+                        <div class="am-gallery-desc">
+                            <p class="am-margin-bottom-xs">专职疑难杂症专职疑难杂症专职疑难杂症</p>
+                        </div>
+                        <a class="am-btn am-btn-secondary am-padding-xs">咨询</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
 </body>

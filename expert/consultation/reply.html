@@ -14,12 +14,19 @@
     <script src="../../AmazeUI-2.3.0/assets/js/jquery.min.js"></script>
     <script src="../../AmazeUI-2.3.0/assets/js/amazeui.min.js"></script>
     <title>xx频道</title>
+    <script>
+        $(function(){
+            var IScroll = $.AMUI.iScroll;
+            var myScroll = new IScroll('#wrapper');
+        });
+    </script>
 </head>
 <body>
 <div class="page">
     <header data-am-widget="header" class="am-header am-header-default">
         <div class="am-header-left am-header-nav"><a href="#left-link" class=""> <span
                 class="am-header-nav-title">返回</span> </a></div>
+        <h1 class="am-header-title am-text-truncate">请问黑眼圈如何治疗？</h1>
     </header>
     <div class="am-panel" style="height: 90%">
         <div class="am-padding-left-sm am-padding-right-sm am-padding-bottom-sm">
@@ -74,9 +81,16 @@ color: #919191;" datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 �
                     </li>
                 </ul>
             </div>
-            <a class="am-btn am-btn-secondary " href="javascript:;">回复</a>
+            <div class="am-margin-top-sm">
+                <form class="am-form">
+                    <div class="am-form-group">
+                        <textarea placeholder="回复内容" class="" rows="5"></textarea>
+                    </div>
+                    <button type="submit" class="am-btn am-btn-secondary">回复</button>
+                    <a type="submit" class="am-btn am-btn-default">重置</a>
+                </form>
+            </div>
         </div>
-
 
     </div>
 </div>
